@@ -5,8 +5,8 @@ import {Token} from "../src/Token.sol";
 
 // RUN TEST
 // forge test --vvv (untuk melihat detail console log)
-// forge test --match-contract TokenTest (untuk menjalankan test pada contract tertentu saja)
-// forge test --match-test testMint (untuk menjalankan test pada function tertentu saja)
+// forge test --match-contract namaFile (untuk menjalankan test pada contract tertentu saja)
+// forge test --match-test namaFunction (untuk menjalankan test pada function tertentu saja)
 
 contract TokenTest is Test {
     Token public token;
