@@ -65,4 +65,9 @@ contract TokenTest is Test {
         console.log("Alice balance:", token.balanceOf(alice));
         console.log("Bob balance:", token.balanceOf(bob));
     }
+
+//     function testMint_error() public {
+//         vm.expectRevert(Token.ERC20ExceedsMaxMintAmmount.selector);
+//         token.mint(alice, 2_000e21);
+//     }
 }

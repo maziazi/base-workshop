@@ -1,16 +1,23 @@
 pragma solidity ^0.8.30;
 
-import {ERC20} from "@openzeppelin/token/ERC20/ERC20.sol"; 
+import {ERC20} from "@openzeppelin/token/ERC20/ERC20.sol";
+import {Ownable} from "@openzeppelin/access/Ownable.sol";
 
-contract Token is ERC20{
+contract Token is ERC20, Ownable {
+    error ERC20ExceedsMaxMintAmmount(uint256 amount);
     // constructor () ERC20 ("Token", "TOKEN"){
     //     _mint(msg.sender, 1000000 * 10 ** decimals());
     // }
 
 //Constructor = functions. Constructor adalah function yang akan dijalankan pertama kali saat contract di deploy
-    constructor () ERC20 ("Maziazi", "MAZI"){}
+    constructor () ERC20 ("Maziazi", "MAZI") Ownable(msg.sender){}
 
 // Mint to create tokens 
+    modifier maxMint (uint256 _amount) {
+        if (_amount > 1_000e21) revert ERC20ExceedsMaxMintAmmount(_amount);
+        _;
+    }
+
     function mint(address to, uint256 amount) external {
         _mint(to, amount);
     }
